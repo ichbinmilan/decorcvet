@@ -1,5 +1,7 @@
 /.idea/
 /public/.htaccess
+/public/images/
+/uploads/
 
 ###> symfony/framework-bundle ###
 /.env
