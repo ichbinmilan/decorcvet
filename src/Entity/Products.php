@@ -23,6 +23,12 @@ class Products
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 255,
+     *      minMessage = "Заглавието трябва да е минимум 2 символа",
+     *      maxMessage = "Заглавието трябва да е не повече от 255 символа"
+     * )
      */
     private $head;
 
@@ -43,11 +49,19 @@ class Products
 
     /**
      * @ORM\Column(type="string", length=512, nullable=true)
+     * @Assert\Length(
+     *      max = 512,
+     *      maxMessage = "Заглавието трябва да е не повече от 512 символа"
+     * )
      */
     private $cultiv;
 
     /**
      * @ORM\Column(type="string", length=512, nullable=true)
+     * @Assert\Length(
+     *      max = 512,
+     *      maxMessage = "Заглавието трябва да е не повече от 512 символа"
+     * )
      */
     private $usefor;
 

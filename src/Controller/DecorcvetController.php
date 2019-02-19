@@ -14,7 +14,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Category;
 use App\Entity\Products;
 use App\Entity\Status;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class DecorcvetController extends AbstractController
 {
@@ -23,6 +22,12 @@ class DecorcvetController extends AbstractController
      */
     public function index(Request $request)
     {
+        $productArr = [];
+        $pic = null;
+        $uploadsDir = $this->makeDir('../uploads/');
+        $imagesDir = $this->makeDir('../public/images/');
+        $thumbDir = $this->makeDir('../public/images/thumbs/');
+
         $categoryRepo = $this->getDoctrine()->getRepository(Category::class)->findAll();
         $statusRepo = $this->getDoctrine()->getRepository(Status::class)->findAll();
         $productsRepo = $this->getDoctrine()->getRepository(Products::class)->findAll();
@@ -33,30 +38,84 @@ class DecorcvetController extends AbstractController
         foreach ($statusRepo as $caty) {
             $status[$caty->getStatus()] = $caty->getId();
         }
+        foreach ($productsRepo as $caty) {
+            $products[$caty->getId()] = $caty->getHead();
+        }
+        $idProd = $request->query->get('id');
+        $produ = $this->getDoctrine()->getRepository(Products::class)->findOneBy(['id' => $idProd]);
+        if (!empty($idProd) && !empty($produ)) {
+            $idd = $idProd;
+            $productArr = [
+                'head' => $produ->getHead(),
+                'price' => $produ->getPrice(),
+                'category' => $produ->getCategory(),
+                'status' => $produ->getStatus(),
+                'description' => $produ->getDescription(),
+                'cultiv' => $produ->getCultiv(),
+                'useFor' => $produ->getUsefor(),
+            ];
+            if (!empty($produ->getPic())) {
+                $pic = '/images/thumbs/' . $produ->getPic();
+            }
+        }
 
-        $form = $this->createFormBuilder()
-            ->add('head', TextType::class, ['required' => false,])
-            ->add('price', NumberType::class, ['required' => false,])
-            ->add('category', ChoiceType::class, ['required' => false, 'choices' => $category,])
-            ->add('status', ChoiceType::class, ['required' => false, 'choices' => $status,])
-            ->add('description', TextareaType::class, ['required' => false,])
-            ->add('cultiv', TextareaType::class, ['required' => false,])
-            ->add('useFor', TextareaType::class, ['required' => false,])
-            ->add('pic', FileType::class, ['required' => false,])
+        $form = $this->createFormBuilder($productArr)
+            ->add('head', TextType::class, ['required' => true, 'label' => 'Заглавие'])
+            ->add('price', NumberType::class, ['required' => false, 'label' => 'Цена'])
+            ->add('category', ChoiceType::class, ['required' => true, 'choices' => $category, 'label' => 'Категория'])
+            ->add('status', ChoiceType::class, ['required' => true, 'choices' => $status, 'label' => 'Статус'])
+            ->add('description', TextareaType::class, ['required' => false, 'label' => 'Описание'])
+            ->add('cultiv', TextareaType::class, ['required' => false, 'label' => 'Отглеждане'])
+            ->add('useFor', TextareaType::class, ['required' => false, 'label' => 'Използване'])
+            ->add('pic', FileType::class, ['required' => false, 'label' => 'Снимка'])
             ->add('save', SubmitType::class, ['label' => 'Запис',])
             ->getForm();
+
+        foreach ($products as $k => $item) {
+            $formProduct[$item . ' (' . $k . ')'] = $k;
+        }
+        $form1 = $this->createFormBuilder()
+            ->add('product', ChoiceType::class, ['required' => true, 'choices' => array_merge(['НОВО РАСТЕНИЕ' => null], $formProduct), 'label' => 'Продукт'])
+            ->add('save', SubmitType::class, ['label' => 'Промяна',])
+            ->getForm();
+        $form1->handleRequest($request);
+        if ($form1->isSubmitted() && $form1->isValid()) {
+            $id = ($form1->getData())['product'];
+            if (empty($id)) {
+                return $this->redirectToRoute('decorcvet');
+            }
+            return $this->redirectToRoute('decorcvet', ['id' => $id]);
+        }
+
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            $file = $data['pic'];
-            $uploadsDir = $this->makeDir('../uploads/');
-            $imagesDir = $this->makeDir('../public/images/');
-            $thumbDir = $this->makeDir('../public/images/thumbs/');
+            if (!empty($idd)) {
+                $product = $this->getDoctrine()->getRepository(Products::class)->find($idd);
+            } else {
+                $product = new Products();
+            }
 
-            $fileName = rand(10000, 9999999) . '.' . $file->guessExtension();
-            $file->move($uploadsDir, $fileName);
-            $product = new Products();
+            $file = $data['pic'];
+//            $fileName = null;
+            if (!empty($file)) {
+                $fileName = rand(10000, 9999999) . '.' . $file->guessExtension();
+                $file->move($uploadsDir, $fileName);
+                $this->smart_resize_image(
+                    $uploadsDir . $fileName,
+                    0,
+                    150,
+                    true,
+                    $thumbDir . $fileName);
+                $this->smart_resize_image(
+                    $uploadsDir . $fileName,
+                    0,
+                    820,
+                    true,
+                    $imagesDir . $fileName);
+                $product->setPic($fileName);
+            }
             $product
                 ->setHead(trim($data['head']))
                 ->setPrice($data['price'])
@@ -64,30 +123,23 @@ class DecorcvetController extends AbstractController
                 ->setStatus($data['status'])
                 ->setDescription(trim($data['description']))
                 ->setCultiv(trim($data['cultiv']))
-                ->setUsefor(trim($data['useFor']))
-                ->setPic($fileName);
+                ->setUsefor(trim($data['useFor']));
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();
-
-            $this->smart_resize_image($uploadsDir . $fileName,
-                $height = 150,
-                $output = $thumbDir . $fileName);
-            $this->smart_resize_image($uploadsDir . $fileName,
-                $height = 820,
-                $output = $imagesDir . $fileName);
 
             return $this->redirectToRoute('decorcvet');
         }
 
         return $this->render('decorcvet/index.html.twig', [
             'form' => $form->createView(),
+            'form1' => $form1->createView(),
+            'pic' => $pic,
         ]);
     }
 
     private function makeDir($dir)
     {
-        var_dump($dir);
         if (!file_exists($dir) || !is_dir($dir)) {
             mkdir($dir);
         }
