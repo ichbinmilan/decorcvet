@@ -24,6 +24,7 @@ class DecorcvetController extends AbstractController
     {
         $productArr = [];
         $pic = null;
+        $edit = false;
         $uploadsDir = $this->makeDir('../uploads/');
         $imagesDir = $this->makeDir('../public/images/');
         $thumbDir = $this->makeDir('../public/images/thumbs/');
@@ -57,6 +58,7 @@ class DecorcvetController extends AbstractController
             if (!empty($produ->getPic())) {
                 $pic = '/images/thumbs/' . $produ->getPic();
             }
+            $edit = true;
         }
 
         $form = $this->createFormBuilder($productArr)
@@ -135,6 +137,7 @@ class DecorcvetController extends AbstractController
             'form' => $form->createView(),
             'form1' => $form1->createView(),
             'pic' => $pic,
+            'edit' => $edit,
         ]);
     }
 
