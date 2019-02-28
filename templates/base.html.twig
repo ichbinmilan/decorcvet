@@ -1,18 +1,78 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-            {#<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">#}
-            {#<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>#}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </body>
+<head>
+    {% block Analytics %}
+    {% endblock %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <META NAME="ROBOTS" CONTENT="{% block robots %}INDEX, FOLLOW{% endblock %}">
+    <meta name="description" content="{% block description %}Ресторант Гетсби{% endblock %}">
+    <title>{% block title %}Градински център Декор Цвет{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        <link rel="stylesheet" href="/style.css">
+        {#<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">#}
+        {#<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>#}
+    {% endblock %}
+</head>
+<body>
+
+{% block header %}
+    <div id="top" class="py-2" style="line-height: 35px!important;">
+        <div class="container">
+            <div class="row align-items-center justify-content-between" style="min-height:75px">
+                <div class="col-md-6">
+                    {#<ul style="list-style-image: url('/pic/ico/clock.svg')">#}
+                    {#<li>РАБОТНО ВРЕМЕ: понеделник&nbsp;&#8209;&nbsp;събота 9:00&nbsp;&#8209;&nbsp;18:00</li>#}
+                    {#</ul>#}
+                    <div class="row">
+                        <div class="col-12">
+                            <img src="/pic/ico/clock.svg" class="mr-3"> РАБОТНО ВРЕМЕ: понеделник - събота 9:00 - 18:00 ч.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="/pic/ico/place.svg" class="mr-3"> Карловско шосе, с. Труд
+                        </div>
+                        <div class="col-md-6">
+                            <img src="/pic/ico/phone.svg" class="mr-3">
+                            <a class="btn-orange" href="tel:+359877013562">0877&nbsp;013&nbsp;562</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include ('/partials/nav.html.twig') %}
+{% endblock %}
+
+{% block bigpic %}{% endblock %}
+{% block nav2 %}{% endblock %}
+
+
+{% block body %}{% endblock %}
+
+{% block footer %}
+    {% include 'partials/footer.html.twig' %}
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+
+    <script src="/script.js"></script>
+
+    <script>
+        {#{% set active = ['home', 'home'] %}#}
+        {% if active is defined %}
+        {% for act in active %}
+        document.getElementById('{{ act }}').classList.add('active');
+        {% endfor %}
+        {% endif %}
+    </script>
+{% endblock %}
+</body>
 </html>

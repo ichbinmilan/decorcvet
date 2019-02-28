@@ -1,0 +1,327 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Raleway');
+/*@import url('https://fonts.googleapis.com/css?family=Comfortaa:400,700|Raleway&subset=cyrillic');*/
+
+html {
+    font-size: 16px;
+}
+
+body {
+    /*font-family: 'Raleway', sans-serif;*/
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 1rem;
+    color: #4D4D4D;
+    letter-spacing: 0.005em;
+}
+
+h1 {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 3rem;
+    line-height: 4.5rem;
+    letter-spacing: 0.0025rem;
+}
+
+h2 {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 2.125rem;
+    line-height: normal;
+    letter-spacing: 0.0025rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    line-height: normal;
+    letter-spacing: 0.0025rem;
+    margin-top: 1.1rem;
+    margin-bottom: 0.625rem;
+}
+
+h4 {
+    font-size: 1.125rem;
+    line-height: normal;
+    letter-spacing: 0.0015rem;
+}
+
+.p2 {
+    font-size: 0.875rem;
+    letter-spacing: 0.0025rem;
+}
+
+.top-bottom {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bullett {
+    list-style-image: url("pic/ico/checked.svg");
+}
+
+.bullett li {
+    margin-bottom: 12px;
+    padding-left: 1rem
+}
+
+.text-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    color: #ECECEC;
+    line-height: .75;
+}
+
+.btn-trans {
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 10px 5%;
+    color: #605649;
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border: 1px solid #008E00;
+    box-sizing: border-box;
+    border-radius: 2px;
+    letter-spacing: 0.0357143rem;
+}
+
+.btn-trans:hover {
+    background-color: #008E00;
+    color: #FFFFFF !important;
+    text-decoration: none;
+}
+
+.btn-orange {
+    font-weight: 500;
+    padding: 10px 5%;
+    color: #FFFFFF;
+    background-color: #FFA626;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    border-radius: 2px;
+    letter-spacing: 0.0357143rem;
+}
+
+.btn-orange:hover {
+    background-color: #ff6400;
+    color: #FFFFFF !important;
+    text-decoration: none;
+}
+
+.bl {
+    border-left: 5px solid #FFA626;
+    padding-left: 15px;
+}
+
+.my-100 {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.px-10 {
+    padding: 5%;
+    margin: 5%;
+}
+
+.shadow-hover:hover {
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.shadow-hover:hover .btn-trans {
+    background-color: #008E00;
+    border-color: transparent;
+    color: #FFFFFF !important;
+    text-decoration: none;
+}
+
+#top {
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 1rem;
+    letter-spacing: 0.0025em;
+    min-height: 75px;
+    width: 100%;
+    background-color: #008E00;
+    color: #FFFFFF !important;
+}
+
+.topnav {
+    font-family: 'Comfortaa', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 1rem;
+    color: #4D4D4D;
+    background-color: #FFFFFF;
+}
+
+.topnav a {
+    color: inherit;
+}
+
+.topnav a:hover {
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    padding-right: 0 !important;
+    padding-left: 1.5rem !important;
+}
+
+.topnav .active {
+    color: #C67700;
+    font-weight: bold;
+}
+
+.nav-link:focus, .nav-link:hover {
+    text-decoration: none;
+}
+
+.nav2 {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 100px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.big_pic_container {
+    background: center center no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.big_pic_container-R {
+    background: right center no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.big_pic {
+    margin: 150px 8%;
+    color: #FFFFFF !important;
+}
+
+.gallery_container {
+    background: center center no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    height: 300px;
+    color: #FFFFFF;
+    padding: 2%;
+    z-index: -10;
+}
+
+.gal-abs {
+    position: absolute;
+    top: 0;
+    transform: translateY(100%);
+}
+
+.blur {
+    height: 100%;
+    display: flex;
+    /*flex-direction: row;*/
+    justify-content: center;
+    padding: 5% 0 5% 0;
+    background-color: transparent;
+}
+
+.gallery:hover .blur {
+    background-color: rgba(121, 121, 121, 0.65);
+}
+
+.lupe {
+    align-self: flex-end;
+}
+
+.lupe img {
+    display: none;
+}
+
+.gallery:hover .lupe img {
+    display: unset;
+}
+
+.shortcut-out {
+    border: 5px solid #008E00;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.shortcut-in {
+    margin-top: -60px;
+    margin-right: -100px;
+    height: 320px;
+    background: center center no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.bg-round {
+    background-color: #FFFFFF;
+    height: 70px;
+    width: 70px;
+    margin: auto;
+    border: transparent;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shadow-hover:hover .bg-green {
+    background-color: #008E00;
+}
+
+.shadow-hover:hover .bg-orange {
+    background-color: #FFA626;
+}
+
+/*.shadow-hover:hover .svg path {
+    fill: #FFFFFF;
+}*/
+
+.shadow-hover:hover .svg-y path {
+    fill: #FFFF00;
+}
+
+.shadow-hover:hover .svg-w path {
+    fill: #FFFFFF;
+}
+
+.card-ico {
+    width: 180px;
+    height: 180px;
+    text-align: center;
+}
+
+.card-ico:hover .svg path {
+    fill: #FFA626;
+}
+
+.card-ico:hover {
+    width: 180px;
+    height: 180px;
+    text-align: center;
+}
+
+.middle-div {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}

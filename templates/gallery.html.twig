@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+    {% block title %}Декор Цвет озеленяване и градински сентър{% endblock %}
+
+{% block javascripts %}
+    {% set active = ['home'] %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="container my-100">
+
+        <div class="row">
+            <div class="col-md-5 gallery">
+                <a href="">
+                    <div class="gallery_container" style="background-image: url('/pic/nature-blue-park-green.jpg');">
+                        <div class="blur text-center">
+                            <div class="gal-abs">
+                                <h2>Солитерни<br> растения</h2>
+                            </div>
+                            <div class="lupe">
+                                <img src="/pic/ico/lupe_orange.svg">
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-7">
+                <div class="row">
+                    <div class="col-md-6 gallery">
+                        <a href="">
+                            <div class="gallery_container" style="background-image: url('/pic/sezonni.jpg');">
+                                <div class="blur text-center">
+                                    <div class="gal-abs">
+                                        <h2>Сeзонни<br> растения</h2>
+                                    </div>
+                                    <div class="lupe">
+                                        <img src="/pic/ico/lupe_orange.svg">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 gallery">
+                        <a href="">
+                            <div class="gallery_container" style="background-image: url('/pic/promo_gal.jpg');">
+                                <div class="blur text-center">
+                                    <div class="gal-abs">
+                                        <h2>Продукт<br> на месеца</h2>
+                                    </div>
+                                    <div class="lupe">
+                                        <img src="/pic/ico/lupe_orange.svg">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {#Vtori red#}
+        <div class="row mt-4">
+            <div class="col-md-7 gallery">
+                <a href="">
+                    <div class="gallery_container" style="background-image: url('/pic/planting_gal.jpg');">
+                        <div class="blur text-center">
+                            <div class="gal-abs">
+                                <h2>Изпълнени проекти <br>за озеленяване</h2>
+                            </div>
+                            <div class="lupe">
+                                <img src="/pic/ico/lupe_orange.svg">
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-5 gallery">
+                <a href="">
+                    <div class="gallery_container" style="background-image: url('/pic/greenhouse-691704_1920.jpg');">
+                        <div class="blur text-center">
+                            <div class="gal-abs">
+                                <h2>Градински<br> център</h2>
+                            </div>
+                            <div class="lupe">
+                                <img src="/pic/ico/lupe_orange.svg">
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

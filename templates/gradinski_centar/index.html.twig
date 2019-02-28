@@ -1,0 +1,154 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Градински център{% endblock %}
+
+{% block javascripts %}
+    {% set active = ['gardenCenter', ''] %}
+    {{ parent() }}
+{% endblock %}
+
+{% block bigpic %}
+    {% embed 'partials/big_pic.html.twig' with {
+        'big_pic':'bigpic_garden-enter.jpg',
+        'h1':'ГРАДИНСКИ ЦЕНТЪР <br> ДЕКОР ЦВЕТ',
+    } %}
+    {% endembed %}
+{% endblock %}
+
+{% block nav2 %}
+    {% include ('/partials/nav_gradinski-center.html.twig') %}
+{% endblock %}
+
+{% block body %}
+    {#Градински център ДЕКОР ЦВЕТ#}
+    <div class="container my-100">
+        <div class="row mb-5">
+            <div class="col-lg-4 col-md-6">
+                {% embed "partials/shortcut.html.twig" with {
+                    'img':'flower-4004435_1280.jpg',
+                    'h':'Продукт на месеца',
+                    'p':'',
+                    'btn':'toMore.svg',
+                    'link': path('home'),
+                } %}
+                {% endembed %}
+            </div>
+            <div class="col-lg-8 col-md-6 pl-5">
+                <div class="bl mb-5">
+                    <h2>Градински център ДЕКОР ЦВЕТ</h2>
+                </div>
+                <div class="pl-5">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum iaculis dui ut pulvinar. Nunc nec commodo augue. Phasellus ultrices sed nulla vel ornare. Sed
+                        interdum
+                        vitae velit id rutrum. Etiam vel convallis ante.</p>
+                    <p>Cras sed sollicitudin dolor, non ornare felis. Nullam fermentum mi a rutrum consectetur. Vestibulum maximus, augue at egestas tincidunt, augue diam pulvinar justo, quis lobortis
+                        quam nunc at arcu. Nulla accumsan tortor nec dolor cursus, at maximus libero suscipit. Mauris scelerisque porta mi, maximus suscipit purus vulputate sit amet. Maecenas
+                        interdum,
+                        risus id tempor sagittis, magna orci lacinia sapien, vel lacinia justo ante eu nulla.</p>
+                    </p>Praesent ullamcorper ornare sem sit amet auctor. Morbi sit amet ante vel augue laoreet mattis nec eget sem. Suspendisse auctor feugiat turpis, eget mollis augue facilisis vel.
+                    Praesent non ornare sapien. Mauris non tortor pharetra, congue ipsum luctus, rutrum turpis. </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row my-100 px-5">
+            <div class="col-md-6">
+                {% embed "partials/card.html.twig" with {
+                    'img':'bonsai.svg',
+                    'h':'Солитерни растения',
+                    'p':'Отделно посадените растения със своите характерни силуети, окраска и цъфтеж имат не само декоративен ефект, но и придават специфична запомняща се естетика на всяка градина.',
+                    'btn':'ОЩЕ',
+                    'link': path('home'),
+                } %}
+                {% endembed %}
+            </div>
+
+            <div class="col-md-6">
+                {% embed "partials/card.html.twig" with {
+                    'img':'flowers-in-a-pot-1.svg',
+                    'h':'Сезонни растения',
+                    'p':'Сезонните ни растения от собствен разсад са не само подходящи за климата, но и позволяват дори малки пространства като балкони и тераси да се оформят като красива цветна градина.',
+                    'btn':'ОЩЕ',
+                    'link': path('home'),
+                } %}
+                {% endembed %}
+            </div>
+        </div>
+    </div>
+
+    {#Как да изберем най-подходящото растение за вкъщи?#}
+    {% embed "partials/big_pic_R.html.twig" with {
+        'img':'pexels-photo-1083805.jpg',
+        'h':'Как да изберем най&#8209;подходящото растение за вкъщи?',
+        'btn':'Научете повече',
+        'link': path('za_vkashti'),
+    } %}
+    {% endembed %}
+
+    {#Защо да купите сезонно растение от Декор Цвет?#}
+    <div class="container my-100">
+        <div class="bl mb-5">
+            <h2>Защо да купите сезонно растение от Декор Цвет?</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                {% embed "partials/card2_orange.html.twig" with {
+                    'img':'plants.svg',
+                    'h':'Съобразени с климата тук',
+                    'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
+                } %}
+                {% endembed %}
+            </div>
+            <div class="col-md-3">
+                {% embed "partials/card2_orange.html.twig" with {
+                    'img':'seeding.svg',
+                    'h':'Доказан <br> произход',
+                    'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
+                } %}
+                {% endembed %}
+            </div>
+            <div class="col-md-3">
+                {% embed "partials/card2_orange.html.twig" with {
+                    'img':'watering-can-1.svg',
+                    'h':'Инструкции за грижи и отглеждане',
+                    'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
+                } %}
+                {% endembed %}
+            </div>
+            <div class="col-md-3">
+                {% embed "partials/card2_orange.html.twig" with {
+                    'img':'flower.svg',
+                    'h':'Съдействие при избора',
+                    'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
+                } %}
+                {% endembed %}
+            </div>
+        </div>
+    </div>
+
+    {#Как да ни намерите#}
+    <div class="container my-100">
+        <div class="row mb-5">
+            <div class="col-lg-4 col-md-6">
+                {% embed "partials/shortcut.html.twig" with {
+                    'img':'plovdiv.jpg',
+                    'h':'Как да ни намерите?',
+                    'p':'',
+                    'btn':'toMap.svg',
+                    'link': 'https://www.google.bg/maps/place/%D0%93%D1%80%D0%B0%D0%B4%D0%B8%D0%BD%D1%81%D0%BA%D0%B8+%D1%86%D0%B5%D0%BD%D1%82%D1%8A%D1%80+%D0%94%D0%B5%D0%BA%D0%BE%D1%80+%D0%A6%D0%B2%D0%B5%D1%82+2/@42.1908743,24.7014841,13.5z/data=!4m13!1m7!3m6!1s0x14acd2bd99262ce5:0xa00a014cd0f3f40!2zNDE5OSDQotGA0YPQtA!3b1!8m2!3d42.2311334!4d24.7243554!3m4!1s0x14acd29a1b606e01:0x59aed2415714f715!8m2!3d42.2260645!4d24.7250848?hl=bg',
+                } %}
+                {% endembed %}
+            </div>
+            <div class="col-lg-8 col-md-6 pl-5">
+                <div class="bl mb-5">
+                    <h2>Как да ни намерите</h2>
+                </div>
+                <div class="pl-5 top-bottom">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum iaculis dui ut pulvinar. Nunc nec commodo augue. Phasellus ultrices sed nulla vel ornare. Sed
+                        interdum vitae velit id rutrum. Etiam vel convallis ante.</p>
+                    <p class="text-right"><a class="btn-trans" href="">свържете се с нас</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

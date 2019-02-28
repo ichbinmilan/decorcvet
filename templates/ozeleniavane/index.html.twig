@@ -1,0 +1,166 @@
+{% extends 'base.html.twig' %}
+
+    {% block title %}Градински център{% endblock %}
+
+{% block javascripts %}
+    {% set active = ['planting'] %}
+    {{ parent() }}
+{% endblock %}
+
+    {% block bigpic %}
+        {% embed 'partials/big_pic.html.twig' with {
+            'big_pic':'bigpic_ozelenjavane.jpg',
+            'h1':'ОЗЕЛЕНЯВАНЕ ОТ <br> ДЕКОР ЦВЕТ',
+        } %}
+        {% endembed %}
+    {% endblock %}
+
+    {% block nav2 %}
+        {% include ('/partials/nav_ozelenjavane.html.twig') %}
+    {% endblock %}
+
+    {% block body %}
+        {#Какво правим?#}
+        <div class="container my-100">
+            <div class="row mb-5">
+                <div class="col-lg-8 col-md-6 pl-5">
+                    <div class="bl mb-5">
+                        <h2>Какво правим?</h2>
+                    </div>
+                    <div class="px-4 top-bottom">
+                        <div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum iaculis dui ut pulvinar. Nunc nec commodo augue. Phasellus ultrices sed nulla vel ornare.
+                                Sed
+                                interdum
+                                vitae velit id rutrum. Etiam vel convallis ante.</p>
+                            <p>Cras sed sollicitudin dolor, non ornare felis. Nullam fermentum mi a rutrum consectetur. Vestibulum maximus, augue at egestas tincidunt, augue diam pulvinar justo, quis
+                                lobortis
+                                quam nunc at arcu. Nulla accumsan tortor nec dolor cursus, at maximus libero suscipit. Mauris scelerisque porta mi, maximus suscipit purus vulputate sit amet. Maecenas
+                                interdum,
+                                risus id tempor sagittis, magna orci lacinia sapien, vel lacinia justo ante eu nulla.</p>
+                            </p>Praesent ullamcorper ornare sem sit amet auctor. Morbi sit amet ante vel augue laoreet mattis nec eget sem. Suspendisse auctor feugiat turpis, eget mollis augue
+                            facilisis
+                            vel.
+                            Praesent non ornare sapien. Mauris non tortor pharetra, congue ipsum luctus, rutrum turpis. </p>
+                        </div>
+                        <p class="text-right"><a class="btn-trans" href="">ПОИСКАЙТЕ ОФЕРТА</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    {% embed "partials/shortcut.html.twig" with {
+                        'img':'garden-3276321_1920.jpg',
+                        'h':'Защо да наема фирма за озеленяване?',
+                        'p':'Изготвянето на проектно решение за озеленяване е процес, в които се визуализират вашите желания и представи за по-естетична и комфортна среда за отдих.',
+                        'btn':'toSeeMore.svg',
+                        'link': path('zashto_firma'),
+                    } %}
+                    {% endembed %}
+                </div>
+            </div>
+        </div>
+
+        {#Идеалната градина в пет лесни стъпки#}
+        <div class="container my-100">
+            <div class="bl mb-5">
+                <h2>Идеалната градина в пет лесни стъпки</h2>
+            </div>
+            <div class="row">
+                <div class="col my-5">
+                    {% embed "partials/textbackground.html.twig" with {
+                        'bg':'1',
+                        'h':'Оглед',
+                        'p':'Събиране на информация за  пространството и за Вашите желания.',
+                    } %}
+                    {% endembed %}
+                </div>
+                <div class="col my-5">
+                    {% embed "partials/textbackground.html.twig" with {
+                        'bg':'2',
+                        'h':'Проект и оферта',
+                        'p':'Разработване на проект и изготвяне на детайлна оферта с цени и срокове.',
+                    } %}
+                    {% endembed %}
+                </div>
+                <div class="col my-5">
+                    {% embed "partials/textbackground.html.twig" with {
+                        'bg':'3',
+                        'h':'Поливна система',
+                        'p':'Изграждане на автоматизирана поливна система.',
+                    } %}
+                    {% endembed %}
+                </div>
+                <div class="col my-5">
+                    {% embed "partials/textbackground.html.twig" with {
+                        'bg':'4',
+                        'h':'Изпълнение',
+                        'p':'Реализиране на одобрения проект за озеленяване.',
+                    } %}
+                    {% endembed %}
+                </div>
+                <div class="col my-5">
+                    {% embed "partials/textbackground.html.twig" with {
+                        'bg':'5',
+                        'h':'Поддръжка',
+                        'p':'Поддържане на растенията с гаранция за резултата.',
+                    } %}
+                    {% endembed %}
+                </div>
+            </div>
+            <p class="text-center my-4"><a class="btn-trans" href="">вижте как работим</a></p>
+        </div>
+
+        {#Някои от клиентите ни#}
+        <div class="big_pic_container" style="background-image: url('/pic/grass.jpg');height: 180px">
+            {#<div class="container">
+                <div class="row">
+                    <div class="col-lg-4 offset-lg-8 col-md-6 offset-md-6">
+                        <div style="margin: 60px 0 60px 0;">
+                            <h2>{{ h|raw }}</h2>
+                            <p class="text-right"><a class="btn btn-danger mt-5" href="{{ link }}">{{ btn }}</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>#}
+        </div>
+
+        {#Защо озеленяване от Декор Цвет?#}
+        <div class="container my-100">
+            <div class="bl mb-5">
+                <h2>Защо озеленяване от Декор Цвет?</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    {% embed "partials/card2_orange.html.twig" with {
+                        'img':'gardening-gloves.svg',
+                        'h':'Проектанти и изпълнители',
+                        'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
+                    } %}
+                    {% endembed %}
+                </div>
+                <div class="col-md-3">
+                    {% embed "partials/card2_orange.html.twig" with {
+                        'img':'pruner.svg',
+                        'h':'Компетентност и техника',
+                        'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
+                    } %}
+                    {% endembed %}
+                </div>
+                <div class="col-md-3">
+                    {% embed "partials/card2_orange.html.twig" with {
+                        'img':'sprout-1.svg',
+                        'h':'Доказан опит и знания',
+                        'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
+                    } %}
+                    {% endembed %}
+                </div>
+                <div class="col-md-3">
+                    {% embed "partials/card2_orange.html.twig" with {
+                        'img':'protection.svg',
+                        'h':'Гаранция за резултата',
+                        'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
+                    } %}
+                    {% endembed %}
+                </div>
+            </div>
+        </div>
+    {% endblock %}

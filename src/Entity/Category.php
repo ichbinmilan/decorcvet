@@ -26,6 +26,11 @@ class Category
      */
     private $pic;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $url;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,6 +56,18 @@ class Category
     public function setPic(?string $pic): self
     {
         $this->pic = $pic;
+
+        return $this;
+    }
+
+    public function getUrl(): ?string
+    {
+        return $this->url;
+    }
+
+    public function setUrl(?string $url): self
+    {
+        $this->url = $url;
 
         return $this;
     }
