@@ -1,0 +1,146 @@
+{% extends 'base.html.twig' %}
+
+    {% block title %}Декор Цвет градински сентър {{ product.name }}{% endblock %}
+
+{% block javascripts %}
+    {% set active = ['gardenCenter', 'cat_'~product.category] %}
+    {{ parent() }}
+{% endblock %}
+
+{#
+{% block bigpic %}
+    {% embed 'partials/big_pic.html.twig' with {
+        'big_pic': category.pic,
+        'h1': category.name ~ '<br>ОТ ДЕКОР ЦВЕТ',
+    } %}
+    {% endembed %}
+{% endblock %}
+#}
+
+{% block nav2 %}
+    {% include ('/partials/nav_gradinski-center.html.twig') %}
+{% endblock %}
+
+
+
+{% block body %}
+    {% set nothing = 'Все още не е въведено' %}
+    <div class="container my-100">
+        <div class="bl mb-5">
+            <h2>{{ product.name }}</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="/images/{{ product.pic }}" style="max-width: 100%;box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);">
+                {#
+                                <div style="margin: auto 10%; box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);">
+                                    <div class="big_pic_container square" style="background-image: url('/images/{{ product.pic }}'); width: 100%"></div>
+                                </div>
+                #}
+            </div>
+            <div class="col-md-7 pl-8">
+                <div>
+                    <h3 style="color: #FFA626;font-weight: bold;margin-top: 0;">{{ product.price|number_format(2) }} лв.</h3>
+                    <p class="p2">{{ product.status }}</p>
+                </div>
+                <div class="mt-4 mb-2">
+                    <div class="bar">
+                        <h4 id="desc" class="tablink active" onclick="change(event, this.id)">Описание</h4>
+                        <h4 id="cultiv" class="tablink" onclick="change(event, this.id)">Отглеждане и грижи</h4>
+                        <h4 id="usage" class="tablink" onclick="change(event, this.id)">Използване</h4>
+                    </div>
+                </div>
+                <div id="desc-field" class="text-field">
+                    <p>{{ product.desc }}</p>
+                    {% if product.desc is empty %}
+                    {{ nothing }}
+                    {% endif %}
+                </div>
+                <div id="cultiv-field" class="text-field" style="display:none">
+                    <p>{{ product.cultiv }}</p>
+                    {% if product.cultiv is empty %}
+                        {{ nothing }}
+                    {% endif %}
+                </div>
+                <div id="usage-field" class="text-field" style="display:none">
+                    <p>{{ product.usage }}</p>
+                    {% if product.usage is empty %}
+                        {{ nothing }}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <p class="text-right mt-5"><a class="btn-trans" href="{{ path('contact') }}">свържете се с нас</a></p>
+    </div>
+
+    {#Защо да купите растение от Декор Цвет?#}
+    <div class="container my-100">
+        <div class="bl mb-5">
+            <h2>Защо да купите растение от Декор Цвет?</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                {% embed "partials/card2_orange.html.twig" with {
+                    'img':'plants.svg',
+                    'h':'Съобразени с климата тук',
+                    'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
+                } %}
+                {% endembed %}
+            </div>
+            <div class="col-md-3">
+                {% embed "partials/card2_orange.html.twig" with {
+                    'img':'seeding.svg',
+                    'h':'Доказан <br> произход',
+                    'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
+                } %}
+                {% endembed %}
+            </div>
+            <div class="col-md-3">
+                {% embed "partials/card2_orange.html.twig" with {
+                    'img':'watering-can-1.svg',
+                    'h':'Инструкции за грижи и отглеждане',
+                    'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
+                } %}
+                {% endembed %}
+            </div>
+            <div class="col-md-3">
+                {% embed "partials/card2_orange.html.twig" with {
+                    'img':'flower.svg',
+                    'h':'Съдействие при избора',
+                    'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
+                } %}
+                {% endembed %}
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function change(evt, id) {
+            var i, x, tablinks;
+            x = document.getElementsByClassName("text-field");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < x.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(id + '-field').style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .bar {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #A8A8A8;;
+            cursor: pointer;
+        }
+    </style>
+
+    {{ parent() }}
+{% endblock %}

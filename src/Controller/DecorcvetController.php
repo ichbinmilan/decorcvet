@@ -107,7 +107,7 @@ class DecorcvetController extends AbstractController
                 $this->smart_resize_image(
                     $uploadsDir . $fileName,
                     0,
-                    150,
+                    250,
                     true,
                     $thumbDir . $fileName);
                 $this->smart_resize_image(

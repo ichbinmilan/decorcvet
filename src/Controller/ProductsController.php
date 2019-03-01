@@ -10,52 +10,83 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ProductsController extends AbstractController
 {
-/*    private $categoryRepo;
-    private $statusRepo;
-    private $productsRepo;
-
-    public function __construct()
-    {
-        $this->categoryRepo = $this->getDoctrine()->getRepository(Category::class)->findAll();
-        $this->statusRepo = $this->getDoctrine()->getRepository(Status::class)->findAll();
-        $this->productsRepo = $this->getDoctrine()->getRepository(Products::class)->findAll();
-    }*/
-
     /**
-     * @Route("/rastenia", name="rastenia")
+     * @Route("/gradinski-centar/rastenia/{kind}", name="rasteniaVid")
      */
-    public function index()
+    public function kind($kind)
     {
-        $this->categoryRepo = $this->getDoctrine()->getRepository(Category::class)->findAll();
-        $this->statusRepo = $this->getDoctrine()->getRepository(Status::class)->findAll();
-        $this->productsRepo = $this->getDoctrine()->getRepository(Products::class)->findAll();
-        foreach ($this->productsRepo as $product) {
+        $categoryRepo = $this->getDoctrine()->getRepository(Category::class)->findAll();
+        $categoryUrl = null;
+        foreach ($categoryRepo as $cat) {
+            if ($cat->getUrl() === $kind) {
+                $category = [
+                    'id' => $cat->getId(),
+                    'name' => $cat->getName(),
+                    'categoryId' => $cat->getId(),
+                    'pic' => $cat->getPic(),
+                    'url' => $cat->getUrl(),
+                ];
+            }
+        }
+        if (empty($category)) {
+            $this->redirectToRoute('home'); //toDo: 404?
+        }
 
+        $productsRepo = $this->getDoctrine()->getRepository(Products::class)->findByCategoryWithoutStatus($category['categoryId'], 5);
+        if (empty($productsRepo)) {
+            $products = null;
+        }
+        foreach ($productsRepo as $product) {
+            $products[] = [
+                'id' => $product->getId(),
+                'name' => $product->getHead(),
+                'price' => $product->getPrice() / 100,
+                'pic' => $product->getPic(),
+                'url' => '/gradinski-centar/rastenia/' . $product->getId() . '/' . str_replace(' ', '-', mb_strtolower($product->getHead())),
+            ];
         }
 
 
-        return $this->render('products/index.html.twig', [
-            'controller_name' => 'ProductsController',
+        return $this->render('products/products.html.twig', [
+            'category' => $category,
+            'products' => $products,
         ]);
     }
 
     /**
-     * @Route("/rastenia/{kind}", name="rasteniaKind")
+     * @Route("/gradinski-centar/rastenia/{productId}/{plant}", name="rasteniaDetails")
      */
-    public function kind()
+    public function details($productId, $plant)
     {
-        return $this->render('products/index.html.twig', [
-            'controller_name' => 'ProductsController',
+        $productsRepo = $this->getDoctrine()->getRepository(Products::class)->find($productId);
+        if (empty($productId)) {
+            $this->redirectToRoute('home'); //toDo: 404?
+        }
+        $statusId = $productsRepo->getStatus();
+        $price = $productsRepo->getPrice() / 100;
+        $statusRepo = $this->getDoctrine()->getRepository(Status::class)->find($statusId);
+        if (!($statusRepo->getShowPrice())) {
+            $price = ' - ';
+        }
+
+
+        $product = [
+            'id' => $productsRepo->getId(),
+            'status' => $statusRepo->getStatus(),
+            'category' => $productsRepo->getCategory(),
+            'name' => $productsRepo->getHead(),
+            'price' => $price,
+            'pic' => $productsRepo->getPic(),
+            'desc' => $productsRepo->getDescription(),
+            'cultiv' => $productsRepo->getCultiv(),
+            'usage' => $productsRepo->getUsefor(),
+        ];
+
+
+        return $this->render('products/product_details.html.twig', [
+            'product' => $product,
         ]);
     }
 
-    /**
-     * @Route("/rastenia/{kind}/{plant}", name="rasteniaKindDetails")
-     */
-    public function details()
-    {
-        return $this->render('products/index.html.twig', [
-            'controller_name' => 'ProductsController',
-        ]);
-    }
+
 }

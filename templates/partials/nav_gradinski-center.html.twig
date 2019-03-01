@@ -7,13 +7,13 @@
         <div class="navbar-collapse collapse dual-nav order-2 justify-content-center">
             <ul class="nav navbar-nav">
                 <li class="nav-item">
-                    <a id="season" class="nav-link" href="{{ path('sezonni') }}">Сезонни растения</a>
+                    <a id="cat_2" class="nav-link" href="{{ path('rasteniaVid', {'kind': 'sezonni-rastenia'}) }}">Сезонни растения</a>
                 </li>
                 <li class="nav-item">
-                    <a id="soliter" class="nav-link" href="{{ path('soliterni') }}">Солитерни растения</a>
+                    <a id="cat_1" class="nav-link" href="{{ path('rasteniaVid', {'kind': 'soliterni-rastenia'}) }}">Солитерни растения</a>
                 </li>
                 <li class="nav-item">
-                    <a id="product" class="nav-link" href="{{ path('promo') }}">Продукт на месеца</a>
+                    <a id="cat_3" class="nav-link" href="{{ path('rasteniaVid', {'kind': 'produkt-na-meseca'}) }}">Продукт на месеца</a>
                 </li>
             </ul>
         </div>

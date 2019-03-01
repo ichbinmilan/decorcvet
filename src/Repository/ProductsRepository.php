@@ -19,6 +19,25 @@ class ProductsRepository extends ServiceEntityRepository
         parent::__construct($registry, Products::class);
     }
 
+    /**
+     * @param $categoryId
+     * @param $status
+     * @return mixed
+     */
+    public function findByCategoryWithoutStatus($categoryId, $status)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.category = :category')
+            ->andWhere('p.status != :status')
+            ->setParameter('category', $categoryId)
+            ->setParameter('status', $status)
+            ->orderBy('p.id', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
+
+
     // /**
     //  * @return Products[] Returns an array of Products objects
     //  */

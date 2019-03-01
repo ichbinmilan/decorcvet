@@ -103,7 +103,7 @@
                     <div class="col-lg-6 offset-lg-1 col-md-8 offset-md-1">
                         <div style="margin: 60px 0 60px 0;">
                             <h2 style="color: #FFFFFF">Промоционален<br> продукт на месеца</h2>
-                            <a class="btn btn-orange mt-5" href="">Вижте още</a>
+                            <a class="btn btn-orange mt-5" href="{{ path('rasteniaVid', {'kind': 'produkt-na-meseca'}) }}">Вижте още</a>
                         </div>
                     </div>
                 </div>
@@ -143,7 +143,7 @@
                                     'h':'Солитерни растения',
                                     'p':'Отделно посадените растения със своите характерни силуети, окраска и цъфтеж имат не само декоративен ефект, но и придават специфична запомняща се естетика на всяка градина.',
                                     'btn':'ОЩЕ',
-                                    'link': path('home'),
+                                    'link': path('rasteniaVid', {'kind': 'soliterni-rastenia'}),
                                 } %}
                                 {% endembed %}
                             </div>
@@ -153,7 +153,7 @@
                                     'h':'Сезонни растения',
                                     'p':'Сезонните ни растения от собствен разсад са не само подходящи за климата, но и позволяват дори малки пространства като балкони и тераси да се оформят като красива цветна градина.',
                                     'btn':'ОЩЕ',
-                                    'link': path('home'),
+                                    'link': path('rasteniaVid', {'kind': 'sezonni-rastenia'}),
                                 } %}
                                 {% endembed %}
                             </div>

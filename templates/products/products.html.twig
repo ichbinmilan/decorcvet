@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+
+    {% block title %}Декор Цвет градински сентър {{ category.name }}{% endblock %}
+
+{% block javascripts %}
+    {% set active = ['gardenCenter', 'cat_'~category.id] %}
+    {{ parent() }}
+{% endblock %}
+
+{% block bigpic %}
+    {% embed 'partials/big_pic.html.twig' with {
+        'big_pic': category.pic,
+        'h1': category.name ~ '<br>ОТ ДЕКОР ЦВЕТ',
+    } %}
+    {% endembed %}
+{% endblock %}
+
+{% block nav2 %}
+    {% include ('/partials/nav_gradinski-center.html.twig') %}
+{% endblock %}
+
+
+
+{% block body %}
+    <div class="container my-100">
+        <div class="bl mb-5">
+            <h2>{{ category.name }}</h2>
+        </div>
+        {% if products is null %}
+            <h3 style="color: #008E00;">В момента не можем да ви предложим {{ category.name|lower }}</h3>
+        {% else %}
+            <div class="row">
+                {% set col = 'col-md-3' %}
+                {% if products|length < 3 %}
+                    {% set col = 'col-md-6' %}
+                {% elseif products|length < 4 %}
+                    {% set col = 'col-md-4' %}
+                {% endif %}
+
+                {% for product in products %}
+                    <div class="{{ col }}">
+                        <a href="{{ product.url }}" class="link">
+                            <div style="margin: auto 10%; box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);">
+                                <div class="big_pic_container square" style="background-image: url('/images/thumbs/{{ product.pic }}'); width: 100%"></div>
+                                <div style="padding: 15px 25px; ">
+                                    <div class="row" style="min-height: 4rem">
+                                        <h4>{{ product.name }}</h4>
+                                    </div>
+                                    <div class="row justify-content-between">
+                                        <span> {{ product.price|number_format(2) }} лв.</span>
+                                        <img src="/pic/ico/search.svg" class="svg">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    {#Защо да купите растение от Декор Цвет?#}
+    <div class="container my-100">
+        <div class="bl mb-5">
+            <h2>Защо да купите {{ category.name|lower }} от Декор Цвет?</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                {% embed "partials/card2_orange.html.twig" with {
+                    'img':'plants.svg',
+                    'h':'Съобразени с климата тук',
+                    'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
+                } %}
+                {% endembed %}
+            </div>
+            <div class="col-md-3">
+                {% embed "partials/card2_orange.html.twig" with {
+                    'img':'seeding.svg',
+                    'h':'Доказан <br> произход',
+                    'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
+                } %}
+                {% endembed %}
+            </div>
+            <div class="col-md-3">
+                {% embed "partials/card2_orange.html.twig" with {
+                    'img':'watering-can-1.svg',
+                    'h':'Инструкции за грижи и отглеждане',
+                    'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
+                } %}
+                {% endembed %}
+            </div>
+            <div class="col-md-3">
+                {% embed "partials/card2_orange.html.twig" with {
+                    'img':'flower.svg',
+                    'h':'Съдействие при избора',
+                    'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
+                } %}
+                {% endembed %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .square {
+            width: 50%;
+        }
+
+        .square:after {
+            content: "";
+            display: block;
+            padding-bottom: 100%;
+        }
+
+        .svg:hover {
+            fill: #aacd4e;
+        }
+        .link, .link:hover {
+            color: inherit;
+            text-decoration: none;
+        }
+    </style>
+
+    {{ parent() }}
+{% endblock %}

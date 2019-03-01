@@ -3,16 +3,17 @@
     {% block title %}Декор Цвет озеленяване и градински сентър{% endblock %}
 
 {% block javascripts %}
-    {% set active = ['home'] %}
+    {% set active = ['gallery'] %}
     {{ parent() }}
 {% endblock %}
 
 {% block body %}
     <div class="container my-100">
 
+        {#parvi red#}
         <div class="row">
             <div class="col-md-5 gallery">
-                <a href="">
+                <a href="{{ path('rasteniaVid', {'kind': 'soliterni-rastenia'}) }}">
                     <div class="gallery_container" style="background-image: url('/pic/nature-blue-park-green.jpg');">
                         <div class="blur text-center">
                             <div class="gal-abs">
@@ -28,7 +29,7 @@
             <div class="col-md-7">
                 <div class="row">
                     <div class="col-md-6 gallery">
-                        <a href="">
+                        <a href="{{ path('rasteniaVid', {'kind': 'sezonni-rastenia'}) }}">
                             <div class="gallery_container" style="background-image: url('/pic/sezonni.jpg');">
                                 <div class="blur text-center">
                                     <div class="gal-abs">
@@ -42,7 +43,7 @@
                         </a>
                     </div>
                     <div class="col-md-6 gallery">
-                        <a href="">
+                        <a href="{{ path('rasteniaVid', {'kind': 'produkt-na-meseca'}) }}">
                             <div class="gallery_container" style="background-image: url('/pic/promo_gal.jpg');">
                                 <div class="blur text-center">
                                     <div class="gal-abs">

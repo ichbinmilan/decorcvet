@@ -24,7 +24,7 @@ class Status
     /**
      * @ORM\Column(type="boolean")
      */
-    private $showPass;
+    private $showPrice;
 
     public function getId(): ?int
     {
@@ -43,14 +43,14 @@ class Status
         return $this;
     }
 
-    public function getShowPass(): ?bool
+    public function getShowPrice(): ?bool
     {
-        return $this->showPass;
+        return $this->showPrice;
     }
 
-    public function setShowPass(bool $showPass): self
+    public function setShowPrice(bool $showPrice): self
     {
-        $this->showPass = $showPass;
+        $this->showPrice = $showPrice;
 
         return $this;
     }
