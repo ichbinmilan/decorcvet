@@ -47,6 +47,6 @@ for (let i = 0; i < len; i++) {
     let divH = div[i].clientHeight;
     // let divH = div[i].clientWidth;
     console.log(divH);
-    div[i].style.fontSize = (divH + (divH * 0.4) + 'px');
+    div[i].style.fontSize = (divH + (divH * 0.0) + 'px');
 }
 // document.getElementsByClassName('text-background')[0].style.fontSize = '100px'

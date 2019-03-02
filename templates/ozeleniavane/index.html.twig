@@ -29,21 +29,11 @@
                     </div>
                     <div class="px-4 top-bottom">
                         <div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum iaculis dui ut pulvinar. Nunc nec commodo augue. Phasellus ultrices sed nulla vel ornare.
-                                Sed
-                                interdum
-                                vitae velit id rutrum. Etiam vel convallis ante.</p>
-                            <p>Cras sed sollicitudin dolor, non ornare felis. Nullam fermentum mi a rutrum consectetur. Vestibulum maximus, augue at egestas tincidunt, augue diam pulvinar justo, quis
-                                lobortis
-                                quam nunc at arcu. Nulla accumsan tortor nec dolor cursus, at maximus libero suscipit. Mauris scelerisque porta mi, maximus suscipit purus vulputate sit amet. Maecenas
-                                interdum,
-                                risus id tempor sagittis, magna orci lacinia sapien, vel lacinia justo ante eu nulla.</p>
-                            </p>Praesent ullamcorper ornare sem sit amet auctor. Morbi sit amet ante vel augue laoreet mattis nec eget sem. Suspendisse auctor feugiat turpis, eget mollis augue
-                            facilisis
-                            vel.
-                            Praesent non ornare sapien. Mauris non tortor pharetra, congue ipsum luctus, rutrum turpis. </p>
+                            <p>Ние от ДЕКОР ЦВЕТ правим така, че да бъдете близо до природата, независимо дали се намирате у дома, на двора или на работното си място. </p>
+                            <p>Именно растенията и зеленината оформят цялостното лице на една сграда и придават завършен вид както на откритите площи, така и на помещенията вътре. В същото време озеленяването (т.нар. ландшафтна архитектура) е цялостен процес, който включва не само поставянето на най-подходящите растения на най-подходящите места предвид Вашите желания и особеностите на терена или обекта, но и създаването на дългосрочна визия за развитието на двора, градината или парка. </p>
+                            <p>Затова нашият екип е специализиран в цялостните решения в областта на озеленяването, независимо дали става въпрос за екстериорни проекти като дворове, паркови площи и пространства около работни сгради или за интериорни проекти като жилищни или работни помещения, балкони, тераси или покривно озеленяване. Ние проектираме зелените площи, като се съобразяваме напълно със спецификите на обекта, климатичните условия и желания краен резултат, изграждаме автоматизирана поливна система, изпълняваме проекта и поддържаме целогодишно градината, така че да се наслаждавате на естетиката на кътчето природа в непосредствена близост до Вас.</p>
                         </div>
-                        <p class="text-right"><a class="btn-trans" href="">ПОИСКАЙТЕ ОФЕРТА</a></p>
+                        <p class="text-right"><a class="btn-trans" href="{{ path('contact') }}">ПОИСКАЙТЕ ОФЕРТА</a></p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -68,7 +58,7 @@
                 <div class="col my-5">
                     {% embed "partials/textbackground.html.twig" with {
                         'bg':'1',
-                        'h':'Оглед',
+                        'h':'Оглед<br>',
                         'p':'Събиране на информация за  пространството и за Вашите желания.',
                     } %}
                     {% endembed %}
@@ -106,7 +96,7 @@
                     {% endembed %}
                 </div>
             </div>
-            <p class="text-center my-4"><a class="btn-trans" href="">вижте как работим</a></p>
+            <p class="text-center my-4"><a class="btn-trans" href="{{ path('kak_rabotim') }}">вижте как работим</a></p>
         </div>
 
         {#Някои от клиентите ни#}
@@ -124,43 +114,5 @@
         </div>
 
         {#Защо озеленяване от Декор Цвет?#}
-        <div class="container my-100">
-            <div class="bl mb-5">
-                <h2>Защо озеленяване от Декор Цвет?</h2>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    {% embed "partials/card2_orange.html.twig" with {
-                        'img':'gardening-gloves.svg',
-                        'h':'Проектанти и изпълнители',
-                        'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
-                    } %}
-                    {% endembed %}
-                </div>
-                <div class="col-md-3">
-                    {% embed "partials/card2_orange.html.twig" with {
-                        'img':'pruner.svg',
-                        'h':'Компетентност и техника',
-                        'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
-                    } %}
-                    {% endembed %}
-                </div>
-                <div class="col-md-3">
-                    {% embed "partials/card2_orange.html.twig" with {
-                        'img':'sprout-1.svg',
-                        'h':'Доказан опит и знания',
-                        'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
-                    } %}
-                    {% endembed %}
-                </div>
-                <div class="col-md-3">
-                    {% embed "partials/card2_orange.html.twig" with {
-                        'img':'protection.svg',
-                        'h':'Гаранция за резултата',
-                        'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
-                    } %}
-                    {% endembed %}
-                </div>
-            </div>
-        </div>
+        {% include '/partials/zashto-ozelenjavane.html.twig' %}
     {% endblock %}

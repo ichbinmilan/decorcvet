@@ -29,19 +29,9 @@
                     </div>
                     <div class="px-4">
                         <div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum iaculis dui ut pulvinar. Nunc nec commodo augue. Phasellus ultrices sed nulla vel ornare.
-                                Sed
-                                interdum
-                                vitae velit id rutrum. Etiam vel convallis ante.</p>
-                            <p>Cras sed sollicitudin dolor, non ornare felis. Nullam fermentum mi a rutrum consectetur. Vestibulum maximus, augue at egestas tincidunt, augue diam pulvinar justo, quis
-                                lobortis
-                                quam nunc at arcu. Nulla accumsan tortor nec dolor cursus, at maximus libero suscipit. Mauris scelerisque porta mi, maximus suscipit purus vulputate sit amet. Maecenas
-                                interdum,
-                                risus id tempor sagittis, magna orci lacinia sapien, vel lacinia justo ante eu nulla.</p>
-                            </p>Praesent ullamcorper ornare sem sit amet auctor. Morbi sit amet ante vel augue laoreet mattis nec eget sem. Suspendisse auctor feugiat turpis, eget mollis augue
-                            facilisis
-                            vel.
-                            Praesent non ornare sapien. Mauris non tortor pharetra, congue ipsum luctus, rutrum turpis. </p>
+                            <p>Всяка градина е динамична структура - тя е жив организъм, който се развива във въремето и се нуждане от постоянни грижи, за да й се наслаждаваме в най-добрия й вид. Именно способността й да се променя с годините налага необходимостта от цялостна визия за трансформацията й в бъдеще още в самото начало при изгаждането й. Точно тази дългосрочна визия е проекта за озеленяване. </p>
+                            <p>От една страна в него намираме оптималните връзки между самата зелена площ и съпътстващите елементи като пътеки, алеи, скални кътове, водни огледала, пейки, беседки, барбекюта, осветление и т.н. От друга страна в проекта се залагат видовете растения, отстоянията между тях и комбинирането  им в групи предвид начина, по който ще растат и ще се променят занапред и вида и обема грижи, които изискват. </p>
+                            <p>Проектът също така Ви позволява да “видите” градината или вътрешното озеленяване още преди изграждането им да е започнало. Само така можете да бъдете сигурни, че крайният резултат удовлетворява напълно желанията Ви за изгледа и атмосферата, както и че озеленяването е съобразено и се съчетава правилно с архитектурата на сградата, с функционалната й употреба и с всички останали елементи в околната среда. </p>
                         </div>
                     </div>
                 </div>
@@ -51,7 +41,7 @@
                         'h':'Някои от нашите проекти',
                         'p':'',
                         'btn':'toMore.svg',
-                        'link': path('home'),
+                        'link': path('galeria_proekti'),
                     } %}
                     {% endembed %}
                 </div>
@@ -76,19 +66,19 @@
                         <h2>Какво получавате, когато проектираме?</h2>
                     </div>
                     <div class="pl-5">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum iaculis dui ut pulvinar. Nunc nec commodo augue. Phasellus ultrices sed nulla vel ornare. Sed
-                            interdum
-                            vitae velit id rutrum. Etiam vel convallis ante.</p>
-                        <p>Cras sed sollicitudin dolor, non ornare felis. Nullam fermentum mi a rutrum consectetur. Vestibulum maximus, augue at egestas tincidunt, augue diam pulvinar justo, quis lobortis
-                            quam nunc at arcu. Nulla accumsan tortor nec dolor cursus, at maximus libero suscipit. Mauris scelerisque porta mi, maximus suscipit purus vulputate sit amet. Maecenas
-                            interdum,
-                            risus id tempor sagittis, magna orci lacinia sapien, vel lacinia justo ante eu nulla.</p>
-                        </p>Praesent ullamcorper ornare sem sit amet auctor. Morbi sit amet ante vel augue laoreet mattis nec eget sem. Suspendisse auctor feugiat turpis, eget mollis augue facilisis vel.
-                        Praesent non ornare sapien. Mauris non tortor pharetra, congue ipsum luctus, rutrum turpis. </p>
+                        <p>Когато създаваме проект за озеленяване, ние започваме с оглед на обекта и уточняване на Вашите желания по отношение на крайния резултат. </p>
+                        <p>Следващата ни стъпка е изготвянето на идеен проект, който включва:</p>
+                        <ul>
+                            <li>схема на разпределението на растенията - какъв растителен вид     къде в градината ще се намира; </li>
+                            <li>описание на растенията - какви растителни видове са включени в проекта;</li>
+                            <li>количествена или количествено-стойностна сметка - колко от съответните растения ще бъдат необходими и - в случай, че ние ще изпълняваме проекта - каква е цената им. </li>
+                        </ul>
+                        <p>При избора на растенията принципът, който е водещ за нас е пълно съобразяване с климатичните особености, с произхода на растенията и грижите, необходими за поддържането им в бъдеще. </p>
+                        <p>След одобрение на идейния проект подготвяме 3D визуализация, така че наистина да “видите” как ще изглежда градината или двора Ви. </p>
                     </div>
                 </div>
             </div>
-            <p class="text-right"><a class="btn-trans" href="">свържете се с нас</a></p>
+            <p class="text-right"><a class="btn-trans" href="{{ path('contact') }}">свържете се с нас</a></p>
         </div>
 
         {#Защо да наема фирма за озелеянване?#}
@@ -100,44 +90,6 @@
         } %}
         {% endembed %}
 
-        {#Защо да купите сезонно растение от Декор Цвет?#}
-        <div class="container my-100">
-            <div class="bl mb-5">
-                <h2>Защо озеленяване от Декор Цвет?</h2>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    {% embed "partials/card2_orange.html.twig" with {
-                        'img':'gardening-gloves.svg',
-                        'h':'Проектанти и изпълнители',
-                        'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
-                    } %}
-                    {% endembed %}
-                </div>
-                <div class="col-md-3">
-                    {% embed "partials/card2_orange.html.twig" with {
-                        'img':'pruner.svg',
-                        'h':'Компетентност и техника',
-                        'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
-                    } %}
-                    {% endembed %}
-                </div>
-                <div class="col-md-3">
-                    {% embed "partials/card2_orange.html.twig" with {
-                        'img':'sprout-1.svg',
-                        'h':'Доказан опит и знания',
-                        'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
-                    } %}
-                    {% endembed %}
-                </div>
-                <div class="col-md-3">
-                    {% embed "partials/card2_orange.html.twig" with {
-                        'img':'protection.svg',
-                        'h':'Гаранция за резултата',
-                        'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
-                    } %}
-                    {% endembed %}
-                </div>
-            </div>
-        </div>
+        {#Защо озеленяване от Декор Цвет?#}
+        {% include '/partials/zashto-ozelenjavane.html.twig' %}
     {% endblock %}

@@ -24,26 +24,12 @@ class GradinskiCentarController extends AbstractController
     }
 
     /**
-     * @Route("/gradinski-centar/sezonni-rastenia", name="sezonni")
+     * @Route("/gradinski-centar/galeria", name="gradinski_centar_galeria")
      */
-    public function sezonni()
+    public function gardenCenterGallery()
     {
-        return $this->render('gradinski_centar/sezonni.html.twig');
+        return $this->render('gradinski_centar/gallery_gc.html.twig');
     }
 
-    /**
-     * @Route("/gradinski-centar/soliterni-rastenia", name="soliterni")
-     */
-    public function soliterni()
-    {
-        return $this->render('gradinski_centar/index.html.twig');
-    }
 
-    /**
-     * @Route("/gradinski-centar/promocia", name="promo")
-     */
-    public function promo()
-    {
-        return $this->render('gradinski_centar/promo.html.twig');
-    }
 }

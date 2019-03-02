@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Декор Цвет градински център{% endblock %}
+
+{% block javascripts %}
+    {% set active = ['gallery'] %}
+    {{ parent() }}
+{% endblock %}
+
+{% block bigpic %}
+    {% embed 'partials/big_pic.html.twig' with {
+        'big_pic':'bigpic_garden-enter.jpg',
+        'h1':'ГРАДИНСКИ ЦЕНТЪР <br> ДЕКОР ЦВЕТ',
+    } %}
+    {% endembed %}
+{% endblock %}
+
+{% block nav2 %}
+    {% include ('/partials/nav_gradinski-center.html.twig') %}
+{% endblock %}
+
+
+{% block body %}
+<div class="container my-100">
+    <div class="bl mb-5">
+        <h2>Тази секция е все още в процес на доработка</h2>
+        <p>Очаквайте скоро</p>
+    </div>
+</div>
+{% endblock %}

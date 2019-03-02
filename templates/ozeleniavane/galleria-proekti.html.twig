@@ -1,27 +1,31 @@
 {% extends 'base.html.twig' %}
 
-    {% block title %}Декор Цвет градински сентър {{ category.name }}{% endblock %}
+    {% block title %}Декор Цвет галерия проекти{% endblock %}
 
 {% block javascripts %}
-    {% set active = ['gardenCenter', 'cat_'~category.id] %}
+    {% set active = ['gallery'] %}
     {{ parent() }}
 {% endblock %}
 
 {% block bigpic %}
     {% embed 'partials/big_pic.html.twig' with {
-        'big_pic': category.pic,
-        'h1': category.name ~ '<br>ОТ ДЕКОР ЦВЕТ',
+        'big_pic': 'bigpic_galeria-proekti.jpg',
+        'h1': 'ИЗПЪЛНЕНИ <br>ПРОЕКТИ ЗА <br>ОЗЕЛЕНЯВАНЕ',
     } %}
     {% endembed %}
 {% endblock %}
 
-{% block nav2 %}
-    {% include ('/partials/nav_gradinski-center.html.twig') %}
-{% endblock %}
-
-
 
 {% block body %}
+    <div class="container my-100">
+        <div class="bl mb-5">
+            <h2>Тази секция е все още в процес на доработка</h2>
+            <p>Очаквайте скоро</p>
+        </div>
+    </div>
+
+{#
+
     <div class="container my-100">
         <div class="bl mb-5">
             <h2>{{ category.name }}</h2>
@@ -60,7 +64,9 @@
         {% endif %}
     </div>
 
-    {#Защо да купите растение от Декор Цвет?#}
+    #}
+{#Защо да купите растение от Декор Цвет?#}{#
+
     {% include '/partials/zashto-rastenie.html.twig' %}
 {% endblock %}
 
@@ -79,6 +85,7 @@
         .svg:hover {
             fill: #aacd4e;
         }
+
         .link, .link:hover {
             color: inherit;
             text-decoration: none;
@@ -86,4 +93,5 @@
     </style>
 
     {{ parent() }}
+#}
 {% endblock %}

@@ -29,21 +29,18 @@
                     </div>
                     <div class="px-4 top-bottom">
                         <div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum iaculis dui ut pulvinar. Nunc nec commodo augue. Phasellus ultrices sed nulla vel ornare.
-                                Sed
-                                interdum
-                                vitae velit id rutrum. Etiam vel convallis ante.</p>
-                            <p>Cras sed sollicitudin dolor, non ornare felis. Nullam fermentum mi a rutrum consectetur. Vestibulum maximus, augue at egestas tincidunt, augue diam pulvinar justo, quis
-                                lobortis
-                                quam nunc at arcu. Nulla accumsan tortor nec dolor cursus, at maximus libero suscipit. Mauris scelerisque porta mi, maximus suscipit purus vulputate sit amet. Maecenas
-                                interdum,
-                                risus id tempor sagittis, magna orci lacinia sapien, vel lacinia justo ante eu nulla.</p>
-                            </p>Praesent ullamcorper ornare sem sit amet auctor. Morbi sit amet ante vel augue laoreet mattis nec eget sem. Suspendisse auctor feugiat turpis, eget mollis augue
-                            facilisis
-                            vel.
-                            Praesent non ornare sapien. Mauris non tortor pharetra, congue ipsum luctus, rutrum turpis. </p>
+                            <p>Когато изпълняваме проекти за озеленяване - независимо дали сме проектирали ние или Вие вече разполагате с готов проект - работата ни преминава през няколко етапа: </p>
+                            <ul>
+                                <li>подготовка на терена - тук включваме дейности като пръскане и изораване, както и доставка на растения и растителен материал;</li>
+                                <li>подравняване - обичайно правим първоначално и следващо фино подравняване;</li>
+                                <li>изграждане на скални кътове, беседки, водни огледала, каменни реки и други архитектурни елементи в градината;</li>
+                                <li>изграждане на автоматизирана поливна система - в случай, че не разполагате с такава;</li>
+                                <li>засаждане на растенията в съответствие с одобрения проект;</li>
+                                <li>полагане на тревния чим.</li>
+                            </ul>
+                            <p>Продължителността на работата ни зависи както от спецификите на терена и сложността на проекта, така и от атмосферните условия, но дългогодишният ни опит ни позволява още на етапа на одобрение на офертата да можем да дадем реалистични крайни срокове и Вие предварително да знаете кога ще можете да се насладите на новата си градина. </p>
                         </div>
-                        <p class="text-right"><a class="btn-trans" href="">ПОИСКАЙТЕ ОФЕРТА</a></p>
+                        <p class="text-right"><a class="btn-trans" href="{{ path('contact') }}">ПОИСКАЙТЕ ОФЕРТА</a></p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -52,7 +49,7 @@
                         'h':'Някои от нашите проекти',
                         'p':'',
                         'btn':'toMore.svg',
-                        'link': path('home'),
+                        'link': path('galeria_proekti'),
                     } %}
                     {% endembed %}
                 </div>
@@ -68,44 +65,6 @@
         } %}
         {% endembed %}
 
-        {#Защо да купите сезонно растение от Декор Цвет?#}
-        <div class="container my-100">
-            <div class="bl mb-5">
-                <h2>Защо озеленяване от Декор Цвет?</h2>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    {% embed "partials/card2_orange.html.twig" with {
-                        'img':'gardening-gloves.svg',
-                        'h':'Проектанти и изпълнители',
-                        'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
-                    } %}
-                    {% endembed %}
-                </div>
-                <div class="col-md-3">
-                    {% embed "partials/card2_orange.html.twig" with {
-                        'img':'pruner.svg',
-                        'h':'Компетентност и техника',
-                        'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
-                    } %}
-                    {% endembed %}
-                </div>
-                <div class="col-md-3">
-                    {% embed "partials/card2_orange.html.twig" with {
-                        'img':'sprout-1.svg',
-                        'h':'Доказан опит и знания',
-                        'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
-                    } %}
-                    {% endembed %}
-                </div>
-                <div class="col-md-3">
-                    {% embed "partials/card2_orange.html.twig" with {
-                        'img':'protection.svg',
-                        'h':'Гаранция за резултата',
-                        'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
-                    } %}
-                    {% endembed %}
-                </div>
-            </div>
-        </div>
+        {#Защо озеленяване от Декор Цвет?#}
+        {% include '/partials/zashto-ozelenjavane.html.twig' %}
     {% endblock %}

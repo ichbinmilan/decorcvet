@@ -29,19 +29,8 @@
                     </div>
                     <div class="px-4">
                         <div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum iaculis dui ut pulvinar. Nunc nec commodo augue. Phasellus ultrices sed nulla vel ornare.
-                                Sed
-                                interdum
-                                vitae velit id rutrum. Etiam vel convallis ante.</p>
-                            <p>Cras sed sollicitudin dolor, non ornare felis. Nullam fermentum mi a rutrum consectetur. Vestibulum maximus, augue at egestas tincidunt, augue diam pulvinar justo, quis
-                                lobortis
-                                quam nunc at arcu. Nulla accumsan tortor nec dolor cursus, at maximus libero suscipit. Mauris scelerisque porta mi, maximus suscipit purus vulputate sit amet. Maecenas
-                                interdum,
-                                risus id tempor sagittis, magna orci lacinia sapien, vel lacinia justo ante eu nulla.</p>
-                            </p>Praesent ullamcorper ornare sem sit amet auctor. Morbi sit amet ante vel augue laoreet mattis nec eget sem. Suspendisse auctor feugiat turpis, eget mollis augue
-                            facilisis
-                            vel.
-                            Praesent non ornare sapien. Mauris non tortor pharetra, congue ipsum luctus, rutrum turpis. </p>
+                            <p>Когато става въпрос за озеленяване, изграждането на градината е точно толкова важно, колкото и поддържането й след това. Причината е, че растенията са живи, а самата градина е непрекъснато развиващ се организъм и те няма как да стават все по-красиви с времето и да изглеждат добре във всеки сезон от годината, ако не получават необходимите грижи. </p>
+                            <p>Също така различните растителни видове имат нужда от различен тип обгрижване, както и за да се развива правилно едно растение, дейностите по него се променят в зависимост от сезона. Понякога тези дейности са трудоемки, а друг път резултатът зависи от специфичните познания за отделните растителни видове и прецизността на манипулациите, от които се нуждаят, а в немалка част от случаите - от наличието на професионална техника и оборудване. Именно това е причината, поради която целогодишно красивите градини и зелени площи, обичайно са тези, които се поддържат от професионалисти със знания и опит в областта на озеленяването и ландшафтната архитектура. </p>
                         </div>
                     </div>
                 </div>
@@ -51,7 +40,7 @@
                         'h':'Някои от нашите проекти',
                         'p':'',
                         'btn':'toMore.svg',
-                        'link': path('home'),
+                        'link': path('galeria_proekti'),
                     } %}
                     {% endembed %}
                 </div>
@@ -76,19 +65,21 @@
                         <h2>Поддръжка на градината с гаранция</h2>
                     </div>
                     <div class="pl-5">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum iaculis dui ut pulvinar. Nunc nec commodo augue. Phasellus ultrices sed nulla vel ornare. Sed
-                            interdum
-                            vitae velit id rutrum. Etiam vel convallis ante.</p>
-                        <p>Cras sed sollicitudin dolor, non ornare felis. Nullam fermentum mi a rutrum consectetur. Vestibulum maximus, augue at egestas tincidunt, augue diam pulvinar justo, quis lobortis
-                            quam nunc at arcu. Nulla accumsan tortor nec dolor cursus, at maximus libero suscipit. Mauris scelerisque porta mi, maximus suscipit purus vulputate sit amet. Maecenas
-                            interdum,
-                            risus id tempor sagittis, magna orci lacinia sapien, vel lacinia justo ante eu nulla.</p>
-                        </p>Praesent ullamcorper ornare sem sit amet auctor. Morbi sit amet ante vel augue laoreet mattis nec eget sem. Suspendisse auctor feugiat turpis, eget mollis augue facilisis vel.
-                        Praesent non ornare sapien. Mauris non tortor pharetra, congue ipsum luctus, rutrum turpis. </p>
+                        <p>Когато поддържаме градини и зелени площи, независимо дали сме ги изграждали ние или вече са готови, обичайно и в зависимост от нуждите извършваме дейности като:</p>
+                        <ul>
+                            <li>сезонни, оформящи и санитарни резитби;</li>
+                            <li>косене, плевене и окопаване;</li>
+                            <li>торене на почвата;</li>
+                            <li>пръскане, аериране и валиране;</li>
+                            <li>напояване;</li>
+                            <li>пролетно и есенно зацветяване със сезонни цветя от собствен разсад;</li>
+                            <li>зазимяване на растенията и цялата градина преди настъпване на зимата.</li>
+                        </ul>
+                        <p>Обикновено работим, като се договаряме за фиксиран месечен абонамент за поддръжка, в рамките на който ние извършваме всички необходими дейности, за да бъде зеленината ви красива, а градината - уютна през всички сезони. </p>
                     </div>
                 </div>
             </div>
-            <p class="text-right"><a class="btn-trans" href="">свържете се с нас</a></p>
+            <p class="text-right"><a class="btn-trans" href="{{ path('contact') }}">свържете се с нас</a></p>
         </div>
 
         {#Защо да наема фирма за озелеянване?#}
@@ -100,44 +91,6 @@
         } %}
         {% endembed %}
 
-        {#Защо да купите сезонно растение от Декор Цвет?#}
-        <div class="container my-100">
-            <div class="bl mb-5">
-                <h2>Защо озеленяване от Декор Цвет?</h2>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    {% embed "partials/card2_orange.html.twig" with {
-                        'img':'gardening-gloves.svg',
-                        'h':'Проектанти и изпълнители',
-                        'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
-                    } %}
-                    {% endembed %}
-                </div>
-                <div class="col-md-3">
-                    {% embed "partials/card2_orange.html.twig" with {
-                        'img':'pruner.svg',
-                        'h':'Компетентност и техника',
-                        'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
-                    } %}
-                    {% endembed %}
-                </div>
-                <div class="col-md-3">
-                    {% embed "partials/card2_orange.html.twig" with {
-                        'img':'sprout-1.svg',
-                        'h':'Доказан опит и знания',
-                        'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
-                    } %}
-                    {% endembed %}
-                </div>
-                <div class="col-md-3">
-                    {% embed "partials/card2_orange.html.twig" with {
-                        'img':'protection.svg',
-                        'h':'Гаранция за резултата',
-                        'p':'Ние проектираме и след това изпълняваме проектите си и ги поддържаме. Затова знаем как да изберем най-подходящото решение и да го изградим по най-добрия начин.',
-                    } %}
-                    {% endembed %}
-                </div>
-            </div>
-        </div>
+        {#Защо озеленяване от Декор Цвет?#}
+        {% include '/partials/zashto-ozelenjavane.html.twig' %}
     {% endblock %}

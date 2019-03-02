@@ -78,4 +78,13 @@ class OzeleniavaneStaticController extends AbstractController
         return $this->render('ozeleniavane/zashto-firma.html.twig', [
         ]);
     }
+
+    /**
+     * @Route("/ozeleniavane/proekti", name="galeria_proekti")
+     */
+    public function galleryProjects()
+    {
+        return $this->render('ozeleniavane/galleria-proekti.html.twig', [
+        ]);
+    }
 }
