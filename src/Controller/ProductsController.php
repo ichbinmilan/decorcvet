@@ -66,7 +66,7 @@ class ProductsController extends AbstractController
         $price = $productsRepo->getPrice() / 100;
         $statusRepo = $this->getDoctrine()->getRepository(Status::class)->find($statusId);
         if (!($statusRepo->getShowPrice())) {
-            $price = ' - ';
+            $price = 0;
         }
 
 

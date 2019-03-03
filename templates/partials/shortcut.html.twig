@@ -1,19 +1,27 @@
-<div class="row align-items-end" style="padding-top: 50px">
-    <div class="col-10">
-        <div class="shortcut-out">
-            <div class="shortcut-in" style="background-image: url('/pic/{{ img }}');"></div>
-            <h3 class="mt-4 text-right">{{ h }}</h3>
-            <p class="text-right">{{ p }}</p>
+{% set href = 'href='~ link %}
+{% set target = '' %}
+{% if link|slice(0, 4) == 'http' %}
+    {% set target = 'target="_blank"' %}
+{% endif %}
+{% if link is empty %}
+    {% set href = '' %}
+{% endif %}
+
+<a {{ href }} {{ target }} class="text-decoration-none">
+    <div class="row align-items-end" style="padding-top: 50px">
+        <div class="col-10">
+            <div class="shortcut-out">
+                <div class="shortcut-in" style="background-image: url('/pic/{{ img }}');"></div>
+                <h3 class="mt-4 text-right">{{ h }}</h3>
+                <p class="text-right">{{ p }}</p>
+            </div>
+        </div>
+
+        <div class="col-2">
+            {% if link is not empty %}
+                <img src="/pic/ico/{{ btn }}">
+            {% endif %}
         </div>
     </div>
-
-    <div class="col-2">
-        {% if link is not empty %}
-        <a href="{{ link }}"><img src="/pic/ico/{{ btn }}"></a>
-        {% endif %}
-    </div>
-
-
-</div>
-
+</a>
 
