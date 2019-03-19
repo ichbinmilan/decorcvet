@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -14,11 +17,14 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Category;
 use App\Entity\Products;
 use App\Entity\Status;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Length;
 
 class DecorcvetController extends AbstractController
 {
     /**
-     * @Route("/decorcvet", name="decorcvet")
+     * @Route("/dekorcvet", name="dekorcvet")
      */
     public function index(Request $request)
     {
@@ -84,9 +90,9 @@ class DecorcvetController extends AbstractController
         if ($form1->isSubmitted() && $form1->isValid()) {
             $id = ($form1->getData())['product'];
             if (empty($id)) {
-                return $this->redirectToRoute('decorcvet');
+                return $this->redirectToRoute('dekorcvet');
             }
-            return $this->redirectToRoute('decorcvet', ['id' => $id]);
+            return $this->redirectToRoute('dekorcvet', ['id' => $id]);
         }
 
 
@@ -130,7 +136,7 @@ class DecorcvetController extends AbstractController
             $em->persist($product);
             $em->flush();
 
-            return $this->redirectToRoute('decorcvet');
+            return $this->redirectToRoute('dekorcvet');
         }
 
         return $this->render('decorcvet/index.html.twig', [
@@ -140,6 +146,49 @@ class DecorcvetController extends AbstractController
             'edit' => $edit,
         ]);
     }
+
+
+    /**
+     * @Route("/dekorcvet/changepass", name="change_pass")
+     */
+    public function changePass(UserPasswordEncoderInterface $passwordEncoder, Request $request)
+    {
+        $form = $this->createFormBuilder()
+            ->add('password', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'first_options' => ['label' => 'Нова парола'],
+                'second_options' => ['label' => 'Повторете паролата'],
+                'constraints' => [
+                    new NotBlank(['message' => 'Моля, въведете парола',]),
+                    new Length([
+                        'min' => 4,
+                        'minMessage' => 'Паролата трябва да бъде поне {{ limit }} символа',
+                        'max' => 4096,
+                    ]),
+                ],
+            ])
+            ->getForm();
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $newPass = $form->getData();
+            $usrId = $this->getUser()->getId();
+            $user = $this->getDoctrine()->getRepository(User::class)->find($usrId);
+            $user->setPassword($passwordEncoder->encodePassword($user, $newPass['password']));
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+//            return $this->redirectToRoute('dekorcvet');
+            return $this->redirectToRoute('app_logout');
+        }
+
+        return $this->render('security/change-pass.html.twig', [
+            'form' => $form->createView(),
+        ]);
+
+
+    }
+
 
     private function makeDir($dir)
     {

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Change Password!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {#{{ form(form) }}#}
+        {{ form_errors(form) }}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit" class="btn btn-orange mb-5">Въвеждане</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

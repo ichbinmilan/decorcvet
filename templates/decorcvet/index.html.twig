@@ -6,7 +6,7 @@
 {% block body %}
     {% set msg, color = 'ВЪВЕЖДАНЕ НА НОВО РАСТЕНИЕ', '#5eb5e0' %}
     {% if edit == true %}
-    {% set msg, color = 'ПРОМЯНА НА РАСТЕНИЕ', '#718C00' %}
+        {% set msg, color = 'ПРОМЯНА НА РАСТЕНИЕ', '#718C00' %}
     {% endif %}
     <div class="container mt-5 mb-5">
         <div class="row">
@@ -17,14 +17,30 @@
                         <img src="{{ pic }}" style="max-width: 100%">
                     </div>
                 {% endif %}
+
+                {#изход и други#}
+                <div class="my-5">
+                    <a class="btn btn-block btn-danger" href="{{ path('app_logout') }}">Изход</a>
+                    <a class="btn btn-block btn-secondary mt-4" href="{{ path('change_pass') }}">Смяна на парола</a>
+                </div>
+
             </div>
             <div class="col-md-9">
                 <div class="text-center mb-3" style="height: 22px;width: 100%;font-weight:bold;background-color:{{ color }} ">
                     {{ msg }}
                 </div>
                 {{ form(form) }}
-                <a class="btn btn-secondary" href="{{ path('decorcvet') }}">Отказвам се</a>
+                <a class="btn btn-secondary" href="{{ path('dekorcvet') }}">Отказвам се</a>
             </div>
         </div>
     </div>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        textarea {
+            height: 11em!important;
+        }
+    </style>
+
 {% endblock %}

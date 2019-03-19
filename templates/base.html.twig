@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {% block Analytics %}
-    {% endblock %}
-{% spaceless %}
+    {% block Analytics %}{% endblock %}
+{#{% spaceless %}#}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <META NAME="ROBOTS" CONTENT="{% block robots %}INDEX, FOLLOW{% endblock %}">
@@ -73,6 +72,6 @@
         {% endif %}
     </script>
 {% endblock %}
-{% endspaceless %}
+{#{% endspaceless %}#}
 </body>
 </html>
