@@ -39,4 +39,12 @@ class DefaultController extends AbstractController
         return $this->render('gallery.html.twig');
     }
 
+    /**
+     * @Route("/obshti-uslovia", name="ou")
+     */
+    public function ou()
+    {
+        return $this->render('ou.html.twig');
+    }
+
 }
