@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Gallery;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -80,11 +81,54 @@ class OzeleniavaneStaticController extends AbstractController
     }
 
     /**
-     * @Route("/ozeleniavane/proekti", name="galeria_proekti")
+     * @Route("/ozeleniavane/galeria", name="galeria_proekti")
      */
     public function galleryProjects()
     {
         return $this->render('ozeleniavane/galleria-proekti.html.twig', [
         ]);
+    }
+
+    /**
+     * @Route("/ozeleniavane/galeria/{kind}", name="galeria_proekti_vid")
+     */
+    public function galleryProjectsKind($kind)
+    {
+        switch ($kind) {
+            case 'administrativni-sgradi':
+                $twigArr['h2'] = 'Изпълнени проекти по озеленяване на административни сгради';
+                $twigArr['imgDir'] = $kind;
+                break;
+            case 'chastni-domove':
+                $twigArr['h2'] = 'Изпълнени проекти по озеленяване на частни имоти';
+                $twigArr['imgDir'] = $kind;
+                break;
+            case 'interiorno-ozeleniavane':
+                $twigArr['h2'] = 'Галерия интериорно озеленяване';
+                $twigArr['imgDir'] = $kind;
+                break;
+            case 'proekti-3D-vizualizacii':
+                $twigArr['h2'] = 'Галерия проекти с 3D визуализации';
+                $twigArr['imgDir'] = $kind;
+                break;
+            case 'raboten-proces':
+                $twigArr['h2'] = 'Галерия работен процес';
+                $twigArr['imgDir'] = $kind;
+                break;
+            default:
+                $this->redirectToRoute('home');
+        }
+
+        //        $twigArr['big_pic'] = 'bigpic_garden-enter.jpg';
+//        $twigArr['h1'] = 'ГРАДИНСКИ ЦЕНТЪР <br> ДЕКОР ЦВЕТ';
+
+        $twigArr['images'] = (new Gallery($twigArr['imgDir']))->images;
+
+
+        if (!$twigArr['images'] === false) {
+            $this->redirectToRoute('home');
+        }
+
+        return $this->render('gallery.html.twig', $twigArr);
     }
 }

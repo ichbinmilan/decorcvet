@@ -36,7 +36,7 @@ class DefaultController extends AbstractController
      */
     public function gallery()
     {
-        return $this->render('gallery.html.twig');
+        return $this->render('gallery-general.html.twig');
     }
 
     /**

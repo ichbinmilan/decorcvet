@@ -1,6 +1,7 @@
 /.idea/
 /public/.htaccess
 /public/images/
+/public/galleries/
 /uploads/
 
 ###> symfony/framework-bundle ###

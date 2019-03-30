@@ -1,99 +1,73 @@
 {% extends 'base.html.twig' %}
 
-    {% block title %}Декор Цвет озеленяване и градински сентър{% endblock %}
+{% block title %}Декор Цвет градински център{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/lightgallery/css/lightgallery.css">
+    <style>
+        .thumb {
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            margin-right: 22px;
+            margin-bottom: 22px;
+            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+{% endblock %}
 
 {% block javascripts %}
     {% set active = ['gallery'] %}
     {{ parent() }}
+
+    <script src="/lightgallery/js/lightgallery.min.js"></script>
+    <script src="/lightgallery/js/lg-thumbnail.min.js"></script>
+    {#<script src="/lightgallery/js/lg-zoom.min.js"></script>#}
+    {#<script src="/lightgallery/js/lg-fullscreen.min.js"></script>#}
+
+    <script> lightGallery(document.getElementById('lightgallery'), {
+            download: false,
+            // thumbnail: false,
+            showThumbByDefault: false
+            // selector: '.item'
+        });
+    </script>
 {% endblock %}
+
+{#
+{% block bigpic %}
+    {% embed 'partials/big_pic.html.twig' with {
+        'big_pic': big_pic,
+        'h1': h1,
+    } %}
+    {% endembed %}
+{% endblock %}
+#}
+
+{#
+resize:
+thumb width: 250 px
+image height: 800 px
+#}
 
 {% block body %}
     <div class="container my-100">
-
-        {#parvi red#}
-        <div class="row">
-            <div class="col-md-5 gallery">
-                <a href="{{ path('rasteniaVid', {'kind': 'soliterni-rastenia'}) }}">
-                    <div class="gallery_container" style="background-image: url('/pic/nature-blue-park-green.jpg');">
-                        <div class="blur text-center">
-                            <div class="gal-abs">
-                                <h2>Солитерни<br> растения</h2>
-                            </div>
-                            <div class="lupe">
-                                <img src="/pic/ico/lupe_orange.svg">
-                            </div>
+        <div class="bl mb-5">
+            <h2>{{ h2 }}</h2>
+        </div>
+        <div class="my-5">
+            <div class="row" id="lightgallery" style="margin: 0;">
+                {% for img in images %}
+                    {#<div class="col-md-3 my-3">#}
+                    <a href="/galleries/{{ imgDir }}/{{ img }}">
+                        <div class="thumb">
+                            <img class="mr-4 mb-4" src="/galleries/{{ imgDir }}/thumb/{{ img }}" style="min-height: 100%; min-width: 100%;">
                         </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-7">
-                <div class="row">
-                    <div class="col-md-6 gallery">
-                        <a href="{{ path('rasteniaVid', {'kind': 'sezonni-rastenia'}) }}">
-                            <div class="gallery_container" style="background-image: url('/pic/sezonni.jpg');">
-                                <div class="blur text-center">
-                                    <div class="gal-abs">
-                                        <h2>Сeзонни<br> растения</h2>
-                                    </div>
-                                    <div class="lupe">
-                                        <img src="/pic/ico/lupe_orange.svg">
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 gallery">
-                        <a href="{{ path('rasteniaVid', {'kind': 'produkt-na-meseca'}) }}">
-                            <div class="gallery_container" style="background-image: url('/pic/promo_gal.jpg');">
-                                <div class="blur text-center">
-                                    <div class="gal-abs">
-                                        <h2>Продукт<br> на месеца</h2>
-                                    </div>
-                                    <div class="lupe">
-                                        <img src="/pic/ico/lupe_orange.svg">
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                        {#<div class="thumb item" style="background-image: url('/galleries/{{ imgDir }}/thumb/{{ img }}')"></div>#}
+                    </a>
+                    {#</div>#}
+                {% endfor %}
             </div>
         </div>
-
-        {#Vtori red#}
-        <div class="row mt-4">
-            <div class="col-md-7 gallery">
-                <a href="{{ path('galeria_proekti') }}">
-                    <div class="gallery_container" style="background-image: url('/pic/planting_gal.jpg');">
-                        <div class="blur text-center">
-                            <div class="gal-abs">
-                                <h2>Изпълнени проекти <br>за озеленяване</h2>
-                            </div>
-                            <div class="lupe">
-                                <img src="/pic/ico/lupe_orange.svg">
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-5 gallery">
-                <a href="{{ path('gradinski_centar_galeria') }}">
-                    <div class="gallery_container" style="background-image: url('/pic/greenhouse-691704_1920.jpg');">
-                        <div class="blur text-center">
-                            <div class="gal-abs">
-                                <h2>Градински<br> център</h2>
-                            </div>
-                            <div class="lupe">
-                                <img src="/pic/ico/lupe_orange.svg">
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-
     </div>
-
-
-
 {% endblock %}
