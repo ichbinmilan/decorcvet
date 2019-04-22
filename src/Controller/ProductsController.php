@@ -46,6 +46,12 @@ class ProductsController extends AbstractController
             ];
         }
 
+        if (count($products) == 1) {
+            return $this->redirectToRoute('rasteniaDetails', [
+                'productId' => $products[0]['id'],
+                'plant' => $products[0]['name']
+            ]);
+        }
 
         return $this->render('products/products.html.twig', [
             'category' => $category,
