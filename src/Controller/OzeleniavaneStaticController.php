@@ -119,11 +119,7 @@ class OzeleniavaneStaticController extends AbstractController
                 $this->redirectToRoute('home');
         }
 
-        //        $twigArr['big_pic'] = 'bigpic_garden-enter.jpg';
-//        $twigArr['h1'] = 'ГРАДИНСКИ ЦЕНТЪР <br> ДЕКОР ЦВЕТ';
-
-        $twigArr['images'] = (new Gallery($twigArr['imgDir']))->images;
-
+        $twigArr['images'] = Gallery::getAllImages($twigArr['imgDir']);
 
         if (!$twigArr['images'] === false) {
             $this->redirectToRoute('home');

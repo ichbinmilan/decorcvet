@@ -1,5 +1,4 @@
 {% extends 'base.html.twig' %}
-{% block newCenter %}{% endblock %}
 
 {% block title %}Декор Цвет градински център{% endblock %}
 {% block stylesheets %}
@@ -23,10 +22,14 @@
 
     <script src="/lightgallery/js/lightgallery.min.js"></script>
     <script src="/lightgallery/js/lg-thumbnail.min.js"></script>
-    {# <script src="/lightgallery/js/lg-zoom.min.js"></script> #}
-    {# <script src="/lightgallery/js/lg-fullscreen.min.js"></script> #}
-
-    <script> lightGallery(document.getElementById('lightgallery'), {
+    <script>
+        lightGallery(document.getElementById('lightgallery'), {
+            download: false,
+            // thumbnail: false,
+            showThumbByDefault: false
+            // selector: '.item'
+        });
+        lightGallery(document.getElementById('lightgallery2'), {
             download: false,
             // thumbnail: false,
             showThumbByDefault: false
@@ -39,9 +42,10 @@
 {% block body %}
     <div class="container my-100">
         <div class="bl mb-5">
-            <h2>{{ h2 }}</h2>
+            <h2>Снимки от градинските центрове</h2>
         </div>
         <div class="my-5">
+            <h3>Нов градински център на изхода на с.Труд в посока Карлово</h3>
             <div class="row" id="lightgallery" style="margin: 0;">
                 {% for img in images %}
                     <a href="/galleries/{{ imgDir }}/{{ img }}">
@@ -52,5 +56,19 @@
                 {% endfor %}
             </div>
         </div>
+        {% if images2|length > 0 %}
+        <div class="my-5">
+            <h3>Градинския център на изхода на с.Труд в посока Пловдив</h3>
+            <div class="row" id="lightgallery2" style="margin: 0;">
+                {% for img in images2 %}
+                    <a href="/galleries/{{ imgDir2 }}/{{ img }}">
+                        <div class="thumb">
+                            <img class="mr-4 mb-4" src="/galleries/{{ imgDir2 }}/thumb/{{ img }}" style="min-height: 100%; min-width: 100%;">
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
     </div>
 {% endblock %}

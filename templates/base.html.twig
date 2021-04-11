@@ -2,14 +2,14 @@
 <html>
 <head>
     {% block Analytics %}{% endblock %}
-{#{% spaceless %}#}
+    {# {% spaceless %} #}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <META NAME="ROBOTS" CONTENT="{% block robots %}INDEX, FOLLOW{% endblock %}">
     <meta name="description" content="{% block description %}Озеленяване и Градински център Декор Цвет{% endblock %}">
     <title>{% block title %}Озеленяване и Градински център Декор Цвет{% endblock %}</title>
     {% block stylesheets %}
-        {#{{ encore_entry_link_tags('app') }}#}
+        {# {{ encore_entry_link_tags('app') }} #}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="/style.css">
     {% endblock %}
@@ -44,9 +44,18 @@
             </div>
         </div>
     </div>
-    {% include ('/partials/nav.html.twig') %}
 {% endblock %}
 
+{% block newCenter %}
+    <div id="top-2">
+        <div class="container py-2 text-center">
+            <p class="mb-0">Заповядайте в новия градински център, където на 3000 м<sup>2</sup> ще намерете голямо разнообразие от дървета, храсти и сезонни цветя - собствено производство, както и богат асортимент стайни растения.</p>
+        </div>
+    </div>
+{% endblock %}
+{% block nav %}
+    {% include ('/partials/nav.html.twig') %}
+{% endblock %}
 {% block bigpic %}{% endblock %}
 {% block nav2 %}{% endblock %}
 
@@ -59,12 +68,12 @@
 
 
 {% block javascripts %}
-    {#{{ encore_entry_script_tags('app') }}#}
+    {# {{ encore_entry_script_tags('app') }} #}
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="/script.js"></script>
 
     <script>
-        {#{% set active = ['home', 'home'] %}#}
+        {# {% set active = ['home', 'home'] %} #}
         {% if active is defined %}
         {% for act in active %}
         document.getElementById('{{ act }}').classList.add('active');
@@ -72,6 +81,6 @@
         {% endif %}
     </script>
 {% endblock %}
-{#{% endspaceless %}#}
+{# {% endspaceless %} #}
 </body>
 </html>

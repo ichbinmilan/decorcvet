@@ -29,19 +29,17 @@ class GradinskiCentarController extends AbstractController
      */
     public function gardenCenterGallery()
     {
-//        $twigArr['big_pic'] = 'bigpic_garden-enter.jpg';
-//        $twigArr['h1'] = 'ГРАДИНСКИ ЦЕНТЪР <br> ДЕКОР ЦВЕТ';
-        $twigArr['h2'] = 'Снимки от градинския център';
-
         $twigArr['imgDir'] = 'gradinski-centar';
-        $twigArr['images'] = (new Gallery($twigArr['imgDir']))->images;
+        $twigArr['images'] = Gallery::getAllImages($twigArr['imgDir']);
+        $twigArr['imgDir2'] = 'gradinski-centar-1';
+        $twigArr['images2'] = Gallery::getAllImages($twigArr['imgDir2']);
 
 
         if (!$twigArr['images'] === false) {
             $this->redirectToRoute('home');
         }
 
-        return $this->render('gallery.html.twig', $twigArr);
+        return $this->render('gallery2row.html.twig', $twigArr);
     }
 
 
