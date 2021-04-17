@@ -2,6 +2,23 @@
 
 {% block header %} {% endblock %}
 {% block title %} {% endblock %}
+{% block newCenter %} {% endblock %}
+{% block nav %}
+    <div class="container d-flex justify-content-between mt-4">
+        <a href="/" class="mr-5" target="_blank"> <img src="/pic/ico/DecorCvet_logo.svg" alt="Декор Цвет"> </a>
+        <a class="btn btn-link" href="{{ path('dekorcvet') }}">Въвеждане на разстение</a>
+        <a class="btn btn-link" href="{{ path('updateGallery') }}">Опресняване на Галериите</a>
+        <a class="btn btn-link" href="{{ path('change_pass') }}">Смяна на парола</a>
+        <a class="btn btn-link" href="{{ path('app_logout') }}">Изход</a>
+    </div>
+{% endblock %}
+{% block flash %}
+    {% for message in app.flashes('success') %}
+        <div class="container alert alert-success">
+            ✔ {{ message|raw }}
+        </div>
+    {% endfor %}
+{% endblock %}
 
 {% block body %}
     {% set msg, color = 'ВЪВЕЖДАНЕ НА НОВО РАСТЕНИЕ', '#5eb5e0' %}
@@ -17,13 +34,6 @@
                         <img src="{{ pic }}" style="max-width: 100%">
                     </div>
                 {% endif %}
-
-                {# изход и други #}
-                <div class="my-5">
-                    <a class="btn btn-block btn-danger" href="{{ path('app_logout') }}">Изход</a>
-                    <a class="btn btn-block btn-secondary mt-4" href="{{ path('change_pass') }}">Смяна на парола</a>
-                </div>
-
             </div>
             <div class="col-md-9">
                 <div class="text-center mb-3" style="height: 22px;width: 100%;font-weight:bold;background-color:{{ color }} ">
@@ -38,11 +48,8 @@
 
 {% block footer %}
     <div style="background: #005F00;padding: 3% 0;">
-    <div class="container d-flex justify-content-between">
-        <a href="{{ path('makeGallery', {'galleryName': 'gradinski-centar'}) }}" class="btn-orange">Опресняване на Галерия НОВ градински център</a>
-        <a href="{{ path('makeGallery', {'galleryName': 'gradinski-centar-1'}) }}" class="btn-orange">Опресняване на Галерия градински център</a>
     </div>
-    </div>{% endblock %}
+{% endblock %}
 
 
 {% block stylesheets %}

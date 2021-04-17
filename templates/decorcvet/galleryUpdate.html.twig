@@ -1,0 +1,23 @@
+{% extends 'decorcvet/index.html.twig' %}
+
+
+{% block body %}
+    <div class="container mt-5 mb-5">
+        {# изход и други #}
+        {% set galleries = {
+            'gradinski-centar': 'Градински центрове: НОВ градински център',
+            'gradinski-centar-1': 'Градински центрове: градински център',
+            'administrativni-sgradi': 'Изпълнени проекти: Административни сгради',
+            'chastni-domove': 'Изпълнени проекти: Частни имоти',
+            'interiorno-ozeleniavane': 'Изпълнени проекти: Интериорно озеленяване',
+            'proekti-3D-vizualizacii': 'Изпълнени проекти: Проекти с 3D визуализации',
+            'raboten-proces': 'Изпълнени проекти: работен процес',
+        } %}
+        <h2 class="text-center">Опресняване на галериите</h2>
+        <div class="my-5">
+            {% for galleryName, text in galleries %}
+                <a href="{{ path('makeGallery', {'galleryName': galleryName}) }}" class="btn btn-success btn-block text-left mb-4"> {{ text|upper }}</a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

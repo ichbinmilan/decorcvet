@@ -189,6 +189,16 @@ class DecorcvetController extends AbstractController
 
     }
 
+
+    /**
+     * @Route("/dekorcvet/galleries-update", name="updateGallery")
+     */
+    public function updateGallery()
+    {
+        return $this->render('decorcvet/galleryUpdate.html.twig');
+    }
+
+
     /**
      * @Route("/dekorcvet/make-gallery/{galleryName}", name="makeGallery")
      */
@@ -234,7 +244,8 @@ class DecorcvetController extends AbstractController
                     $imagesDir . $file);
             }
         }
-        return $this->redirectToRoute('dekorcvet');
+        $this->addFlash('success', $galleryName . ' се опресни успешно.');
+        return $this->redirectToRoute('updateGallery');
     }
 
     private function makeDir($dir): string
