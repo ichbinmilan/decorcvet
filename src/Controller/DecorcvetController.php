@@ -223,13 +223,15 @@ class DecorcvetController extends AbstractController
         }
 
         $files = scandir($uploadsDir);
+        $counter = 0;
         foreach ($files as $k => $file) {
             if (
                 is_file($uploadsDir . $file)
                 && !is_dir($imagesDir . $file)
                 && strpos(mime_content_type($uploadsDir . $file), 'image') !== false
             ) {
-
+                $counter++;
+                set_time_limit(10);
                 Gallery::smart_resize_image(
                     $uploadsDir . $file,
                     0,
@@ -244,7 +246,7 @@ class DecorcvetController extends AbstractController
                     $imagesDir . $file);
             }
         }
-        $this->addFlash('success', $galleryName . ' се опресни успешно.');
+        $this->addFlash('success', "$galleryName с $counter снимки се опресни успешно.");
         return $this->redirectToRoute('updateGallery');
     }
 
