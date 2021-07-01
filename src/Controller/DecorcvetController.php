@@ -179,9 +179,9 @@ class DecorcvetController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 //            return $this->redirectToRoute('dekorcvet');
+            $this->addFlash('success', 'Паролата е сменена успешно');
             return $this->redirectToRoute('app_logout');
         }
-
         return $this->render('security/change-pass.html.twig', [
             'form' => $form->createView(),
         ]);
